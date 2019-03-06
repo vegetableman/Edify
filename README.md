@@ -14,4 +14,4 @@ Each module uses it's own store. The store allows subscription to interested par
 
 ## CSS Modules
 
-CSS Modules allow for a cleaner way of separating name conflicts and help us uss good old CSS, instead of JS.
+CSS Modules allow for a cleaner way of separating name conflicts and help us use good old CSS, instead of JS.
