@@ -47,3 +47,12 @@
 .cart_count {
   margin-left: 5px;
 }
+
+.logout {
+  cursor: pointer;
+  margin: 0 10px 0 0;
+}
+
+.logout:hover {
+  opacity: 0.6;
+}

@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import styles from "./login.module.css";
+import styles from "./register.module.css";
 import { Textfield, Button } from "../common";
 import { authStore, userStore } from "../../stores";
-import { Link } from "react-router-dom";
 
-const Login = props => {
+const Register = props => {
   const [form, setValues] = useState({
+    userName: "",
     emailAddress: "",
-    password: "",
-    err: false
+    password: ""
   });
 
   const updateField = e => {
@@ -25,25 +24,24 @@ const Login = props => {
         <form
           onSubmit={async e => {
             e.preventDefault();
-            const result = await authStore.authenticate(
-              form.emailAddress,
-              form.password
-            );
-            if (result.isAuthenticated) {
-              props.history.push("/");
-            } else {
-              setValues({
-                ...form,
-                err: true
-              });
-            }
+            await authStore.register(form.emailAddress, form.password);
+            userStore.setUser({
+              username: form.userName,
+              emailAddress: form.emailAddress
+            });
+            props.history.push("/");
           }}
           className={styles.form}>
-          {form.err && (
-            <div className={styles.formerrgroup}>
-              Invalid Email ID/ Password
-            </div>
-          )}
+          <div className={styles.formgroup}>
+            <Textfield
+              styles={styles.textfield}
+              type="text"
+              name="userName"
+              required
+              placeholder="User Name"
+              onChange={updateField}
+            />
+          </div>
           <div className={styles.formgroup}>
             <Textfield
               styles={styles.textfield}
@@ -60,21 +58,17 @@ const Login = props => {
               type="password"
               name="password"
               required
-              placeholder="Password"
+              placeholder="Enter Password"
               onChange={updateField}
             />
           </div>
           <Button type="submit" styles={styles.submit}>
-            Login
+            Register
           </Button>
-          <div className={styles.formgroup} />
         </form>
-        <div className={styles.register_footer}>
-          <Link to="/register">Register</Link>
-        </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Register;

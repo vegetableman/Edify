@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { authStore } from "./stores";
-import { Login, Home, Payment } from "./components";
+import { Login, Home, Payment, Register } from "./components";
 
 function PrivateRoute({ component: Component, ...rest }) {
   return (
@@ -25,14 +25,27 @@ function PrivateRoute({ component: Component, ...rest }) {
 }
 
 class App extends Component {
+  state = {
+    isAuthenticated: authStore.getIsAuthenticated()
+  };
+
   render() {
     return (
       <Switch>
         <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
         <PrivateRoute exact path="/payment" component={Payment} />
         <PrivateRoute path="/" component={Home} />
       </Switch>
     );
+  }
+
+  componentDidMount() {
+    authStore.subscribe(state => {
+      this.setState({
+        isAuthenticated: state.isAuthenticated
+      });
+    });
   }
 }
 

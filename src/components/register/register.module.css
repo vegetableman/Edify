@@ -17,6 +17,7 @@
 
 .container {
   background: #fff;
+  height: 300px;
   width: 450px;
   border-radius: 10px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
@@ -39,24 +40,4 @@
 .submit {
   padding: 10px 14px !important;
   width: 100%;
-}
-
-.formerrgroup {
-  color: #ca2f2f;
-  margin: 0;
-  font-family: Helvetica;
-}
-
-.register_footer {
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px 40px 10px 0;
-  background: #eee;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  align-content: center;
-}
-
-.register_footer a {
-  color: steelblue;
 }

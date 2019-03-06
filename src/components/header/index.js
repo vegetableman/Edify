@@ -1,11 +1,22 @@
 import React, { Component } from "react";
 import styles from "./header.module.css";
-import { userStore, cartStore } from "../../stores";
+import { userStore, cartStore, authStore } from "../../stores";
 import { Link } from "react-router-dom";
 import _ from "lodash";
 
 const UserContext = React.createContext();
 const CartContext = React.createContext();
+
+const LogoutButton = () => {
+  return (
+    <img
+      onClick={authStore.signout}
+      className={styles.logout}
+      title="logout"
+      src="https://icongr.am/clarity/logout.svg?size=22"
+    />
+  );
+};
 
 const UserInfo = () => (
   <UserContext.Consumer>
@@ -39,6 +50,7 @@ const Header = () => {
       <div className={styles.panel}>
         <UserInfo />
         <CartInfo />
+        <LogoutButton />
       </div>
     </header>
   );
@@ -60,11 +72,17 @@ class HeaderContainer extends Component {
       </UserContext.Provider>
     );
   }
+
+  componentWillUnmount() {
+    this.unSubscribeUser && this.unSubscribeUser();
+    this.unSubscribeCart && this.unSubscribeCart();
+  }
+
   componentDidMount() {
-    userStore.subscribe(state => {
+    this.unSubscribeUser = userStore.subscribe(state => {
       this.setState({ userState: state });
     });
-    cartStore.subscribe(() => {
+    this.unSubscribeCart = cartStore.subscribe(() => {
       this.setState({ cartStoreState: cartStore });
     });
   }
