@@ -2,6 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Edify
 
+![Home Page](./home.png?raw=true)
+
 ### Context
 
 Relies explicitly on `Provider`, `Consumer` and `UseContext` to propagate store state
