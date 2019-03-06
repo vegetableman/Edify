@@ -1,0 +1,43 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: #c0cecc;
+  height: 100vh;
+  width: 100%;
+}
+
+.logo {
+  font-family: Pacifico;
+  font-size: 50px;
+  color: #6b96a5;
+}
+
+.container {
+  background: #fff;
+  height: 250px;
+  width: 450px;
+  border-radius: 10px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+  margin-bottom: 200px;
+  margin-top: 30px;
+}
+
+.form {
+  padding: 18px 40px;
+}
+
+.formgroup {
+  margin: 30px 0;
+}
+
+.textfield {
+  width: 100%;
+}
+
+.submit {
+  padding: 10px 14px !important;
+  width: 100%;
+}

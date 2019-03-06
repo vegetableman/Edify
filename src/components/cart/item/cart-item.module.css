@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  align-items: center;
+
+  border-bottom: 1px solid #000;
+  color: #fff;
+  padding: 20px 30px;
+}
+
+.cover {
+  width: 70px;
+}
+
+.title {
+  margin: 20px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.edit_controls {
+  display: flex;
+  align-items: end;
+  flex: 0 0 200px;
+}
+
+.increment_icon,
+.decrement_icon {
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.increment_icon:hover,
+.decrement_icon:hover {
+  opacity: 0.8;
+}

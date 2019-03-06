@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background: #ffff00a6;
+  height: 150px;
+}
+
+.user_info {
+  font-weight: 600;
+  font-size: 15px;
+  padding: 0 20px;
+}
+
+.logo {
+  flex: 1;
+
+  font-family: Pacifico;
+  font-size: 60px;
+  color: #6b96a5;
+  padding: 10px 30px 0 30px;
+}
+
+.panel {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 0 0 40px;
+}
+
+.panel a {
+  outline: none;
+}
+
+.cart_info {
+  font-weight: 600;
+  background: #333;
+  color: #fff;
+  cursor: pointer;
+  padding: 1px 10px;
+  margin-right: 20px;
+}
+
+.cart_info:hover {
+  background: #555555;
+}
+
+.cart_count {
+  margin-left: 5px;
+}

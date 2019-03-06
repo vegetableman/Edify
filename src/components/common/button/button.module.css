@@ -1,0 +1,31 @@
+.base {
+  background-color: #3897f0;
+  border: 1px solid #3897f0;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+  position: relative;
+  font-size: 14px;
+  padding: 6px 14px;
+  outline: none;
+}
+
+.empty {
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  background: none;
+  border: 1px solid #fff;
+  font-size: 14px;
+  padding: 6px 14px;
+  outline: none;
+}
+
+.empty:hover {
+  background: #ffffff1a;
+}
+
+.big {
+  composes: base;
+  padding: 10px 30px;
+}
