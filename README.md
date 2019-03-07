@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ![Home Page](./home.png?raw=true)
 
-Demo: https://edify-38sdcfjh3.now.sh
+Demo: https://edify-i9ftiyqdd.now.sh
 
 ### Context
 
