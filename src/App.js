@@ -24,6 +24,26 @@ function PrivateRoute({ component: Component, ...rest }) {
   );
 }
 
+function LoginRoute({ component: Component, ...rest }) {
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        !authStore.getIsAuthenticated() ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/",
+              state: { from: props.location }
+            }}
+          />
+        )
+      }
+    />
+  );
+}
+
 class App extends Component {
   state = {
     isAuthenticated: authStore.getIsAuthenticated()
@@ -32,7 +52,7 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/login" component={Login} />
+        <LoginRoute exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <PrivateRoute exact path="/payment" component={Payment} />
         <PrivateRoute path="/" component={Home} />
