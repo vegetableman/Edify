@@ -10,11 +10,13 @@ const Home = () => {
   return (
     <main className={styles.wrapper}>
       <div className={styles.container}>
-        <Header />
-        <Switch>
-          <Route exact path="/" component={ProductList} />
-          <Route exact path="/cart" component={Cart} />
-        </Switch>
+        <div className={styles.content}>
+          <Header />
+          <Switch>
+            <Route exact path="/" component={ProductList} />
+            <Route exact path="/cart" component={Cart} />
+          </Switch>
+        </div>
         <Footer />
       </div>
     </main>

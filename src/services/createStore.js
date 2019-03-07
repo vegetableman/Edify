@@ -1,3 +1,10 @@
+/**
+ * An alternative to redux/mobx in 48 lines of code
+ * Features:
+ * Allows subscription and unsubscription to state changes.
+ * Allows selectors to query state.
+ */
+
 import _ from "lodash";
 
 let uid = 1;

@@ -9,7 +9,19 @@
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
+
   background: #ddd;
   height: 100%;
   width: calc(100% - 400px);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  margin-bottom: 150px;
+  height: 100%;
 }
