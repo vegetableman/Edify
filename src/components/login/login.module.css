@@ -57,6 +57,7 @@
   align-content: center;
 }
 
-.register_footer a {
+.register_link {
   color: steelblue;
+  text-decoration: none;
 }

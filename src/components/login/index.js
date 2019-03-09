@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./login.module.css";
 import { Textfield, Button } from "../common";
-import { authStore, userStore } from "../../stores";
+import { authStore } from "../../stores";
 import { Link } from "react-router-dom";
 
 const Login = props => {
@@ -47,6 +47,7 @@ const Login = props => {
           <div className={styles.formgroup}>
             <Textfield
               styles={styles.textfield}
+              aria-label="email"
               type="email"
               name="emailAddress"
               required
@@ -57,6 +58,7 @@ const Login = props => {
           <div className={styles.formgroup}>
             <Textfield
               styles={styles.textfield}
+              aria-label="password"
               type="password"
               name="password"
               required
@@ -70,7 +72,9 @@ const Login = props => {
           <div className={styles.formgroup} />
         </form>
         <div className={styles.register_footer}>
-          <Link to="/register">Register</Link>
+          <Link to="/register" className={styles.register_link}>
+            Register
+          </Link>
         </div>
       </div>
     </div>

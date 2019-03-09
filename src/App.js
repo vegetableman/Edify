@@ -1,48 +1,13 @@
-import React, { Component } from "react";
+import React, { Component, lazy, Suspense } from "react";
 import "./App.css";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import { authStore } from "./stores";
-import { Login, Home, Payment, Register } from "./components";
+import { routes } from "./services";
+import Login from "./components/login";
 
-function PrivateRoute({ component: Component, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={props =>
-        authStore.getIsAuthenticated() ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: props.location }
-            }}
-          />
-        )
-      }
-    />
-  );
-}
-
-function LoginRoute({ component: Component, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={props =>
-        !authStore.getIsAuthenticated() ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/",
-              state: { from: props.location }
-            }}
-          />
-        )
-      }
-    />
-  );
-}
+const { PublicRoute, PrivateRoute } = routes;
+const LoadingMessage = () => "Loading...";
+const lazyImport = filename => lazy(() => import(`${filename}`));
 
 class App extends Component {
   state = {
@@ -51,12 +16,22 @@ class App extends Component {
 
   render() {
     return (
-      <Switch>
-        <LoginRoute exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        <PrivateRoute exact path="/payment" component={Payment} />
-        <PrivateRoute path="/" component={Home} />
-      </Switch>
+      <Suspense fallback={<LoadingMessage />}>
+        <Switch>
+          <PublicRoute exact path="/login" component={Login} />
+          <PublicRoute
+            exact
+            path="/register"
+            component={lazyImport("./components/register")}
+          />
+          <PrivateRoute
+            exact
+            path="/payment"
+            component={lazyImport("./components/payment")}
+          />
+          <PrivateRoute path="/" component={lazyImport("./components/home")} />
+        </Switch>
+      </Suspense>
     );
   }
 

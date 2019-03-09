@@ -13,15 +13,15 @@ const CartItem = ({ id, onRemove, onAdd, getCount, onRemoveOneItem }) => {
       </div>
       <div className={styles.edit_controls}>
         <img
-          src="https://icongr.am/clarity/plus-circle.svg?color=ffffff&size=20"
-          className={styles.increment_icon}
-          onClick={onAdd}
-        />
-        <div>{getCount(id)}</div>
-        <img
           src="https://icongr.am/clarity/minus-circle.svg?color=ffffff&size=20"
           className={styles.decrement_icon}
           onClick={onRemoveOneItem}
+        />
+        <div>{getCount(id)}</div>
+        <img
+          src="https://icongr.am/clarity/plus-circle.svg?color=ffffff&size=20"
+          className={styles.increment_icon}
+          onClick={onAdd}
         />
       </div>
       <Button variant="empty" onClick={onRemove}>
