@@ -30,10 +30,14 @@ const UserInfo = () => (
   </UserContext.Consumer>
 );
 
-const CartInfo = () => (
+const CartInfo = props => (
   <CartContext.Consumer>
     {({ getCount }) => (
-      <Link to="/cart">
+      <Link
+        to="/cart"
+        onMouseOver={() => {
+          import("../cart");
+        }}>
         <div className={styles.cart_info}>
           <span>Cart</span>{" "}
           <span className={styles.cart_count}>{getCount()}</span>
